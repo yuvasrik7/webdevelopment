@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Calculator</title>
+        <link rel="icon" href="https://tse2.mm.bing.net/th/id/OIP.fa2znzVQ9fpSwJO7QgpbSQHaHa?pid=Api&P=0&h=180">
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <header class ="head">
+            <h1 class="spe" > 🖩 Calculator</h1>
+            <button class="click1"> - </button>
+            <button class="click"> X </button>
+            
+        </header>
+
+        <label for="text" class="data" >
+        </label>
+        <input class="data" id="val" type="text"  placeholder="Enter here" required>
+        <input class="out"  id="output" type="number" placeholder="answer" readonly>
+        <main class="main1">
+            
+            
+             <div class="box" onclick="joinvalue('1')" >1</div>
+            <div class="box" onclick="joinvalue('2')">2</div>
+            <div class="box" onclick="joinvalue('3')">3</div>
+            <div class="box" onclick="joinvalue('+')">+</div>
+            <div class="box" onclick="joinvalue('4')">4</div>
+            <div class="box" onclick="joinvalue('5')">5</div>
+            <div class="box" onclick="joinvalue('6')">6</div>
+             <div class="box" onclick="joinvalue('-')">-</div>
+            <div class="box" onclick="joinvalue('7')">7</div>
+            <div class="box" onclick="joinvalue('8')">8</div>
+            <div class="box" onclick="joinvalue('9')">9</div>
+             <div class="box" onclick="joinvalue('*')">*</div>
+             <div class="box" onclick="joinvalue('0')">0</div>
+             
+              <div class="box" onclick="joinvalue('00')">00</div>
+              <div class="box" onclick="clearInput()">CE</div>
+            <div class="box" onclick="joinvalue('/')">/</div>
+              <div class="helo" onclick="calculate()">=</div>
+           
+            
+
+        </main>
+        
+<!--          <script>
+            
+         function joinvalue( a)
+         {
+              document.getElementById("val").value+=a;
+         }
+         function clearInput()
+         {
+             document.getElementById("val").value="";
+            document.getElementById("output").value="";
+         }
+       function calculate()
+       {   
+          let ans=document.getElementById("val").value;
+          try{
+          let result=eval(ans);
+           document.getElementById("output").value=result;
+          }
+          catch(error){
+          document.getElementById("output").value="error";
+          }
+       }
+
+</script>
+    </body>
+</html>
+ -->
