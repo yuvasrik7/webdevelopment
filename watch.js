@@ -41,4 +41,4 @@ function update() {
     milli = String(milli).padStart(2, "0");
 
     display.textContent = `${hours}:${minutes}:${seconds}:${milli}`;
-
+}
