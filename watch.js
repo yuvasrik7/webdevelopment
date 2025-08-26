@@ -35,4 +35,10 @@ function update() {
     let minutes = Math.floor((elapsedtime / (1000*60))%60);
          let seconds = Math.floor((elapsedtime / 1000) % 60);
     let milli = Math.floor((elapsedtime % 1000) / 10);
+    hours = String(hours).padStart(2, "0");
+    minutes = String(minutes).padStart(2, "0");
+    seconds = String(seconds).padStart(2, "0");
+    milli = String(milli).padStart(2, "0");
+
+    display.textContent = `${hours}:${minutes}:${seconds}:${milli}`;
 
