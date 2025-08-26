@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>getbooks</title>
+        <link rel="stylesheet" href="options.css">
+    </head>
+    <body>
+        <header>
+            <h1>GET YOUR BOOKS HERE!!</h1>
+        </header>
+        
+            <main >
+                <div class="second" >
+                      <div class ="bookrow">
+                        <div class="divst">Blue umbrella </div>
+                        <div class="plus" onclick="add(this)">+</div>
+                        <div class="minus" onclick="sub(this)">-</div>
+                       <div class="ans"> <input type="number" class="get"  value="0" style="border:none;outline:none;"></div>
+                        </div>
+                        <div class="bookrow">
+                         <div class="divst">The Secret</div>
+                         <div class="plus" onclick="add(this)">+</div>
+                          <div class="minus" onclick="sub(this)">-</div>
+                          <div class="ans"> <input type="number" class="get"  value="0" style="border:none;outline:none;"></div>
+                         </div>
+                         <div class="bookrow">
+                        <div class="divst">To Kill a Mockingbird	Harper Lee</div>
+                          <div class="plus" onclick="add(this)">+</div>
+                           <div class="minus" onclick="sub(this)">-</div>
+                           <div class="ans"> <input type="number" class="get"  value="0" style="border:none;outline:none;"></div>
+                          </div>
+                          <div class="bookrow">
+                        <div class="divst" >   1984	George Orwell</div>
+                          <div class="plus" onclick="add(this)">+</div>
+                           <div class="minus" onclick="sub(this)">-</div>
+                           <div class="ans"> <input type="number" class="get"  value="0" style="border:none;outline:none;"></div>
+                          </div>
+                        <div class="bookrow">
+                         <div class="divst">   Prclasse and Prejudice	Jane Austen</div>
+                           <div class="plus" onclick="add(this)">+</div>
+                            <div class="minus" onclick="sub(this)">-</div>
+                            <div class="ans"> <input type="number" class="get"  value="0" style="border:none;outline:none;"></div>
+                           </div>
+                           <div class="bookrow">
+                          <div class="divst">  The Great Gatsby	F. Scott Fitzgerald</div>
+                            <div class="plus" onclick="add(this)">+</div>
+                             <div class="minus" onclick="sub(this)">-</div>
+                             <div class="ans"> <input type="number" class="get"  value="0" style="border:none;outline:none;"></div>
+                            </div>
+<!--                          <div class="bookrow">
+                         <div class="divst">   Harry Potter and the Sorcerer’s Stone	J.K. Rowdivng</div>
+                           <div class="plus" onclick="add(this)">+</div>
+                            <div class="minus" onclick="sub(this)">-</div>
+                            <div class="ans"> <input type="number" class="get"  value="0" style="border:none;outline:none;"></div>
+                           </div>
+                           <div class="bookrow">
+                         <div class="divst">   The Alchemist	Paulo Coelho</div>
+                           <div class="plus" onclick="add(this)">+</div>
+                            <div class="minus" onclick="sub(this)">-</div>
+                            <div class="ans"> <input type="number" class="get"  value="0" style="border:none;outline:none;"></div>
+                           </div>
+                           <div class="bookrow">
+                        <div class="divst">    The Catcher in the Rye	J.D. Sadivnger</div>
+                          <div class="plus" onclick="add(this)">+</div>
+                           <div class="minus" onclick="sub(this)">-</div>
+                           <div class="ans"> <input type="number" class="get"  value="0" style="border:none;outline:none;"></div>
+                          </div>
+                           <div class="bookrow">
+                         <div class="divst">   Sapiens: A Brief History of Humankind	Yuval Noah Harari</div>
+                           <div class="plus" onclick="add(this)">+</div>
+                            <div class="minus" onclick="sub(this)">-</div>
+                            <div class="ans"> <input type="number" class="get"  value="0" style="border:none;outline:none;"></div>
+                           </div>
+                            <div class="bookrow">
+                         <div class="divst">   The Da Vinci Code	Dan Brown</div>
+                           <div class="plus" onclick="add(this)">+</div>
+                            <div class="minus" onclick="sub(this)">-</div>
+                            <div class="ans"> <input type="number" class="get"  value="0" style="border:none;outline:none;"></div>
+                           </div>
+                            <div class="bookrow">
+                         <div class="divst">   Wings of Fire	A.P.J. Abdul Kalam & Arun Tiwari</div>
+                        
+                         <div class="plus" onclick="add(this)">+</div>
+                          <div class="minus" onclick="sub(this)">-</div>
+                          <div class="ans"> <input type="number" class="get"  value="0" style="border:none;outline:none;"></div>
+                         </div>
+                      
+                </div>
+               
+            </main>
+            <footer CLASS="foot">
+                <p id="para" > TOTAL BUYS:0</p>
+                <button class="cart">SUBMIT</button>
+            </footer>
+               
+                        <script>
+                           
+                            
+                            function add(ele)
+                            {  let result=ele. parentElement.querySelector(".get");
+                               result.value=parseInt(result.value)+1;
+                               updateTotal();
+                            }
+                            function sub(ele1)
+                            {
+                              let result1=ele1.parentElement.querySelector(".get");
+                              if(parseInt(result1.value)>0)
+                            {
+                              result1.value=parseInt(result1.value)-1;
+                            }
+                            }
+                           
+                            function updateTotal() 
+                            {
+                                        let total = 0;
+                                        let allInputs = document.querySelectorAll(".get");
+                                        allInputs.forEach(input => {
+                                          total += parseInt(input.value) || 0;
+                                        });
+
+                                        // Update total display
+                                        let upd = document.getElementById("para");
+                                        upd.textContent = "TOTAL BUYS: " + total;
+                                      }
+                                                                
+                        </script>
+                    
+        </body>
+    
+</html> -->
