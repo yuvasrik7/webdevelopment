@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>browse</title>
+        <link rel="stylesheet" href="mainsearch.css">
+    </head>
+    <body>
+        <header>
+            <div class="first" >
+                <div class="cont">&larr;</div>
+                <div class="loader" onclick="cursor()">&#x21bb;</div>
+                <input type="text" id="intput"  style="border:none;outline:none;" autofocus>
+            </div>
+        </header>
+    </body>
+    <script>
+        function cursor()
+        {
+            var value=document.querySelector(".loader");
+            value.addEventListener('click',()=>{
+                value.classList.add('spin-once');
+                setTimeout(()=>{ value.classList.remove('spin-once');},500)})
+            }
+    </script>
+</html>
