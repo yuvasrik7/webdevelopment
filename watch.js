@@ -27,3 +27,12 @@ function reset() {
     elapsedtime = 0;
     display.textContent = "00:00:00:00";
 }
+function update() {
+    const currenttime = Date.now();
+    elapsedtime = currenttime - starttime;
+
+    let hours = Math.floor(elapsedtime / (1000 * 60 * 60));
+    let minutes = Math.floor((elapsedtime / (1000*60))%60);
+         let seconds = Math.floor((elapsedtime / 1000) % 60);
+    let milli = Math.floor((elapsedtime % 1000) / 10);
+
