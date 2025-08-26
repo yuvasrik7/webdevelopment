@@ -1,0 +1,17 @@
+table,caption,th,tr,td{
+    border:1.5px dotted rgb(14, 88, 125);
+    border-collapse: collapse;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+nav,a:visited{
+    color:chartreuse;
+}
+a:hover{
+    color:blueviolet;
+}
+h1{
+    color:rgb(154, 21, 43);
+}
+summary{
+    color:aqua;
+}
