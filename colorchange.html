@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>change color</title>
+        <link rel="stylesheet" href="maincolorchange.css">
+    </head>
+    <body>
+        <header class="head">Press the button to change the page color</header>
+        <main class="container">
+            <div><button class="button" onclick="change('red')">Red</button></div>
+            <div><button class="button" onclick="change('orange')">orange</button></div>
+            <div><button class="button" onclick="change('blue')">blue</button></div>
+            <div><button class="button" onclick="change('yellow')">yellow</button></div>
+            <div><button class="button" onclick="change('green')">green</button></div>
+             <script>
+                
+                function change(color)
+                {
+                     document.body.style.backgroundColor=color;
+
+                }
+             </script>
+        </main>
+    </body>
+</html>
