@@ -19,3 +19,11 @@ function stop() {
         isrunning = false;
     }
 }
+function reset() {
+    clearInterval(timer);
+    timer = null;
+    isrunning = false;
+    starttime = 0;
+    elapsedtime = 0;
+    display.textContent = "00:00:00:00";
+}
