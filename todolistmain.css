@@ -1,0 +1,15 @@
+*{
+    margin:0;
+    box-sizing: border-box;
+    padding:0;
+}
+header{
+    text-align:center;
+    background-color: rgb(46, 144, 213);
+    border:2px solid rgb(40, 201, 237);
+    border-radius: 30px;
+    color:whitesmoke;
+    /* margin-left:30%;
+    margin-right:30%; */
+    margin:10px 30% 10px 30%;
+}
