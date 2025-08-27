@@ -17,4 +17,28 @@
                     <div class="listtype">
                     <ul id="task"></ul>
                     </div>
+                     </div>
+  
+        </MAIN>
+        <script>
+           const inputele=document.getElementById("list");
+           const inputlist=document.getElementById("task");
+           const btn=document.getElementById("button");
+          function addtask()
+        {
+                   if(inputele.value.trim()!=='')
+                   {
+                    const task=inputele.value.trim();
+                    const listitem=document.createElement("li");
+                    listitem.innerHTML=` <input type="checkbox" id="check"><span class="task-text"></span>${task}<button class="dbutton">X</button>`;
+                    listitem.querySelector(".dbutton").addEventListener('click',()=>{
+                        inputlist.removeChild(listitem);
+                    })
+                    inputlist.appendChild(listitem);
+                    inputele.value='';
+                   }
+                
+                   else{
+                    alert("please enter a task!!");
+
                
