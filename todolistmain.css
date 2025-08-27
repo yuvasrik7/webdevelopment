@@ -13,3 +13,19 @@ header{
     margin-right:30%; */
     margin:10px 30% 10px 30%;
 }
+body{
+
+    background:linear-gradient(to bottom,rgb(41, 185, 242),rgb(138, 210, 238),whitesmoke, rgb(138, 210, 238),rgb(41, 185, 242));
+   
+     height:100vh;  
+}
+h2{
+    padding: 10px;
+    text-align: center;
+}
+button
+{  margin-top:5px;
+   width:70px;
+   height:25px;
+    background-color: rgb(24, 149, 195);
+}
