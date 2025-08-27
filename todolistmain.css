@@ -29,3 +29,49 @@ button
    height:25px;
     background-color: rgb(24, 149, 195);
 }
+.dbutton
+{
+    background-color: red;
+    border:0.5px solid red;
+    border-radius: 50%;
+    color:white;
+    width:30px;
+   height:25px;
+   margin-left: 0;
+}
+#check
+{
+    width:40px;
+}
+.listtype
+{  margin-top:5px;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    column-gap: 3rem;
+   
+}
+ul{
+    margin:3px;
+    list-style-type: none;
+}
+.task-text {
+    flex: 1;              /* makes text take available space */
+    margin-right: 10px;   /* spacing before delete button */
+}
+input{
+    width:600px;
+    height:25px;
+    border:2px solid rgb(109, 109, 109) ;
+    border-radius:10px;
+    padding-left:5px;
+}
+.content
+{   
+   
+    background-color:white;
+    margin:100px 20%;
+   min-height: 300px;
+    border:2px solid white;
+    border-radius: 15px;
+}
