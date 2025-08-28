@@ -36,6 +36,11 @@
             {
                 toast.classList.add('invalid');
             }
+            setTimeout(()=>
+        {
+            toast.classList.add("hide");},4500
+        );
+            setTimeout(()=>{toast.remove();},5000);
             }
         </script>
     </body>
