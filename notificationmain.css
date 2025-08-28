@@ -39,23 +39,13 @@ button{
     width:300px;
     height:50px;
     margin:15px 0;
-    box-shadow: 0 0 20px (rgb(39, 37, 37));
+    padding-left:3px;
+    box-shadow: 0 3px 20px (rgb(39, 37, 37));
     display:flex;
     align-items: center;
+     position: relative;
+    transform:translateX(100%);
+    animation:moveleft 0.5s linear forwards;
+   
 }
-button:hover{
-    background-color: rgb(97, 91, 91);
-}
-.toast i{
-  
-    color:green;
-    font-size: 25px;
-}
-.toast.error i
-{
-    color:red;
-}
-.toast.invalid i
-{
-    color:orange;
-}
+
