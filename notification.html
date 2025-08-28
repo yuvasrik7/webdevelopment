@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>NOTIFICATION</title>
+        <link rel="stylesheet" href="notificationmain.css">
+        <script src="https://kit.fontawesome.com/b37190e41c.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header class="head">TASK NOTIFICATION!!!</header>
+        <main class="container">
+            <div class="content">
+                <button onclick="showtoast(success)">Success</button>
+                <button onclick="showtoast(error)">Error</button>
+                <button onclick="showtoast(invalid)">Invalid</button>
+            </div>
+            <div id="toastbox">
+
+            </div>
+        </main>
+        <script>
+            let success=` <i class="fa-solid fa-circle-check"></i> successfully submitted`;
+            let error=` <i class="fa-solid fa-circle-xmark"></i>please try to fix the error`;
+            let invalid=` <i class="fa-solid fa-circle-exclamation"></i> Invalid input, check again`;
+            let toastbox=document.getElementById("toastbox");
+            function showtoast( msg)
+            {
+               let toast=document.createElement("div");
+               toast.classList.add('toast');
+               toast.innerHTML= `${msg}`;
+               toastbox.appendChild(toast);
+               if(msg.includes('error'))
+               {
+                toast.classList.add('error');
+               }
+               if(msg.includes('Invalid'))
+            {
+                toast.classList.add('invalid');
+            }
+            }
+        </script>
+    </body>
+</html>
