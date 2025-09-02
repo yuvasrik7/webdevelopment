@@ -1,0 +1,41 @@
+*
+{
+    margin:0;
+    box-sizing: border-box;
+    padding:0;
+}
+body{
+     height:100%;
+}
+.container
+{    border:2px solid black;
+    width:50%;
+    margin:200px auto;
+    min-height:300px;
+     display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    font-size: 24px;
+
+}
+
+input{
+    outline:0;
+    border:1px solid rgba(0, 0, 0, 0.468);
+    font-size: 24px;
+    margin:10px;
+    padding-left:5px;
+    border-radius:5px;
+    width:90%;
+}
+button{
+   
+   
+    background-color: blue;
+    color:whitesmoke;
+    width:90%;
+    height: 30px;
+    font-weight: 500;
+
+}
