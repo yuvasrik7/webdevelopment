@@ -1,302 +1,207 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Career Guidance</title>
-        <link rel="icon" href="https://i.pinimg.com/originals/8d/fe/97/8dfe9756ecd43af1e3872bebdaffe1fb.jpg">
-       
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    </head>
-    <body>
-        <head> 
-            <h1>ONE STOP CAREER GUIDANCE</h1>
-
-        </head>
-        <main class="main1">
-            <div class="div1">
-                <p class="p1">Login</p>
-                
-                    <input type="email" id="input1" placeholder="Email">
-                    <br>
-                <div class="input-box">
-                    <input type="password" class="in" placeholder="passsword">
-                    <img class="ima" onclick="click1()" src="closeeye.jpg">
-                </div>
-                <p>Forgot Password?</p>
-                <button class="login">Login</button>
-                <p>Don't have an account? <span class="blue">signup</span></p>
-                <div class="or">
-                    Or
-                </div>
-                <button class="facebook"><i class="fa-brands fa-facebook" style="color: #0040b3;"></i>Login with Facebook</button>
-                <button class="google"><i class="fa-brands fa-google"></i> Login with Google</button>
-
-            </div>
-            <div class="div2">
-                 <p class="p1">Signup</p>
-                
-                    <input type="email" id="input1" placeholder="Email">
-                    <br>
-                <div class="input-box">
-                    <input type="password" class="in" placeholder="passsword">
-                
-                <img class="ima" onclick="click1()" src="closeeye.jpg">
-                </div>
-
-                <p>Forgot Password</p>
-                <button class="login">Login</button>
-                <p>Don't have an account? <span class="blue">signup</span></p>
-                <div class="or">
-                    Or
-                </div>
-                <button class="facebook"><i class="fa-brands fa-facebook" style="color: #0040b3;"></i>Login with Facebook</button>
-                <button class="google"><i class="fa-brands fa-google"></i> Login with Google</button>
-            </div>
-             
-
-        
-        <script>
-            let val=document.getElementsByClassName("in")[0];
-            let pic=document.getElementsByClassName("ima")[0];
-            function click1()
-            {  
-                if(val.type==="password")
-                    {
-                       pic.src="openeye1.jpg";
-                       val.type="text";
-                      
-                    }
-           else{
-                     val.type="password";
-                     pic.src="closeeye.jpg";
-           }
-               
+<head>
+    <title>Career Guidance</title>
+    <link rel="icon" href="https://i.pinimg.com/originals/8d/fe/97/8dfe9756ecd43af1e3872bebdaffe1fb.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {margin:0;
+             padding:0;
+              box-sizing: border-box;
             }
-        </script>
-            <style>
-                *
-{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
-    
-}
-body{
-    
-    height: 100vh;
-}
-body{
-    background-image:url(https://img.freepik.com/premium-vector/back-school-blackboard-with-chalk-drawings-copy-space-horizontal-banner_687448-24.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-h1{
-     text-align:center; 
-     padding:10px;
-     color:rgb(255, 255, 255);
-}
-.div1,.div2
-{   padding: 10px 20px;
-    background-color:rgb(255, 255, 255);
-    color:rgb(7, 7, 7);
-    display: inline-block;
-    width:30%;
-    margin:10px 0px;
-    margin-top:5%;
-    margin-bottom:5%;
-    border-radius: 5px;
-    padding-bottom:3%;
-   
-}
-.div1{
-     margin-left:16%;
-}
-.div2{
-    margin-left:9%;
-    margin-right:13%;
-}
-.div1:hover, .div2:hover {
-  transform: scale(1.05);      
-  box-shadow: 0 10px 20px rgba(255, 250, 250, 0.3); 
-}
-.p1{
-    text-align:center;
-    font-size: 1.5rem;
-    padding:10px;
-}
-.main1 p
-{
-    text-align:center;
-    margin:4% 0;
-}
-.blue
-{
-    color:rgb(53, 53, 234);
-}
-input{
-    padding:7px;
-    margin:5px;
-    width:100%;
-}
-.input-box{
-    /* background-color: white; */
-    border-radius:5px;
-    /* width:80%;
-    max-width:500px; */
-    /* padding:10px 20px; */
-    /* margin:300px auto; */
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
-}
+        body {
+            height: 100vh;
+            background-image:url(https://img.freepik.com/premium-vector/back-school-blackboard-with-chalk-drawings-copy-space-horizontal-banner_687448-24.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align:center; 
+            margin-top:10px;
+            padding:10px;
+            color:white;
+        }
 
-.input-box img{
-    width:25px;
-    cursor:pointer;
-}
-.login
-{   position: relative;    
-    margin:10px 0px;
-    padding: 10px 20px;
-    display: block;
-    background-color: rgb(116, 201, 184);
-    color:white;
-    border:rgb(255, 255, 255);
-    border-radius: 7px;
-    text-align: center;
-    font-size:16px;
-    width:100%;
-}
-.login:hover{
-     transform: scale(1);      
-  box-shadow: 0 5px 10px rgb(151, 184, 167); 
-}
-.or
-{
-    display:flex;
-    flex-direction: row;
-   margin-top: 10px;
-   margin-bottom: 20px;
-   
-}
-.or::before,
-.or::after {
-  content: "";
-  flex: 1;
-  border-bottom: 1px solid gray;
-   
-}
+        .tab-container {
+            width: 40%;
+            margin: 60px auto 40px auto;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            padding: 20px;
+        }
 
-.or::before {
-  margin-right: 10px;
-}
-.or::after {
-  margin-left: 10px;
-}
-.facebook {
-    margin-bottom:10px;
-  position: relative;         
-  display: block;
- width:100%;             
- color:white;
-  padding: 10px 20px;
-  background-color: #60a3fa;
- border:none;
-  color: rgb(0, 0, 0);
-  border-radius: 5px;
-  text-align: center;
-  font-size:14px;
-        
-}
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            background: #eee;
+            cursor: pointer;
+        }
+        .tabs div {
+            width: 50%;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+        }
+        .tabs .active {
+            background: rgb(116, 201, 184);
+            color: white;
+        }
 
-.facebook i {
-    color:white;  
-  position: absolute;        
-  left: 10px;    
-  top: 50%;                  
-  transform: translateY(-50%);
-  font-size: 18px;
-}
-.facebook:hover{
-     transform: scale(1);      
-  box-shadow: 0 5px 10px rgb(99, 113, 168); 
-}
-.google
-{
-  position: relative;        
-  display: block;
- width:100%;             
-  padding: 10px 20px;
-  background-color: white;
- border:1px solid black;
-  color: rgb(121, 119, 119);
-  border-radius: 5px;
-  text-align: center;   
-  font-size:14px;     
-}
+        .form {
+            display: none;
+            padding: 20px 10px;
+        }
+        .form.active {
+            display: block;
+        }
 
-.google i {
-    
-  position: absolute;         
-  left: 10px;                
-  top: 50%;                   
-  transform: translateY(-50%);
-  font-size: 18px;
-}
-.google:hover{
-     transform: scale(1);      
-  box-shadow: 0 5px 10px rgb(116, 116, 117); 
-}
+        input {
+            padding: 7px;
+            margin: 5px 0;
+            width: 100%;
+        }
+        .blue
+        {
+            color:blue;
+        }
+        .login-btn {
+            margin: 15px 0;
+            padding: 10px;
+            display: block;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            background: rgb(116, 201, 184);
+            color: white;
+            font-size: 16px;
+        }
+        .login-btn:hover {
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+        .or
+        {
+                display:flex;
+                flex-direction: row;
+            margin-top: 10px;
+            margin-bottom: 20px;
+           
+            
+        }
+            .or::before,
+            .or::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid gray;
+            
+        }
 
-/* @media screen and (max-width: 1024px) {
-    .div1, .div2 {
-        width: 45%;          
-        margin-left: 2%;
-        margin-right: 2%;
-        display: inline-block;
-    }
-}
+            .or::before {
+            margin-right: 10px;
+            }
+            .or::after {
+            margin-left: 10px;
+         }
 
-@media screen and (max-width: 768px) {
-    .container {
-        display: flex;
-        flex-direction: column; 
-        align-items: center;
-    }
+        .facebook, .google {
+            margin-top: 10px;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 14px;
+            position: relative;
+            text-align: center;
+        }
+        .facebook {
+            background: #60a3fa;
+            color: rgb(255, 255, 255);
+            border: none;
+        }
+        .google {
+            background: white;
+            border: 1px solid black;
+            color: #555;
+        }
+        .facebook i, .google i {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        #text
+        {
+            color:white;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>ONE STOP CAREER GUIDANCE</h1>
+    <div id="text"></div>
+    <script>
+        const sentence="Choose a career you love, and it will shape your future with happiness."
+        const ele=document.getElementById("text");
+        let index=0;
+        function type()
+        {
+            if(index<sentence.length)
+        {
+            ele.textContent+=sentence.charAt(index);
+            index++;
+            setTimeout(type,85);
+        }
+        else{
+            setTimeout(()=>{
+            ele.textContent="";
+            index=0;
+            type()} ,3000);
+        }
+        }
+        type();
+    </script>
 
-    .div1, .div2 {
-        width: 90%;         
-        margin-left: 0;
-        margin-right: 0;
-        margin-bottom: 20px;
-    }
+    <div class="tab-container">
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('login')">Login</div>
+            <div class="tab" onclick="switchTab('signup')">Signup</div>
+        </div>
 
-    input, .login, .facebook, .google {
-        font-size: 16px;   
-        padding: 12px;
-    }
+        <!-- Login Form -->
+        <div class="form active" id="login">
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <p style="text-align:center">Forgot Password?</p>
+            <button class="login-btn">Login</button>
+            <p style="text-align:center">Don't have an account? <span class="blue" onclick="switchTab('signup')" style="cursor:pointer">Signup</span></p>
+            <div class="or">Or</div>
+            <button class="facebook"><i class="fa-brands fa-facebook"></i> Login with Facebook</button>
+            <button class="google"><i class="fa-brands fa-google"></i> Login with Google</button>
+        </div>
 
-    .or::before, .or::after {
-        margin-left: 5px;
-        margin-right: 5px;
-    }
-}
+        <!-- Signup Form -->
+        <div class="form" id="signup">
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <input type="password" placeholder="Confirm Password">
+            <button class="login-btn">Signup</button>
+            <p style="text-align:center">Already have an account? <span class="blue" onclick="switchTab('login')" style="cursor:pointer">Login</span></p>
+            <div class="or">Or</div>
+            <button class="facebook"><i class="fa-brands fa-facebook"></i> Signup with Facebook</button>
+            <button class="google"><i class="fa-brands fa-google"></i> Signup with Google</button>
+        </div>
+    </div>
 
-@media screen and (max-width: 480px) {
-    h1 {
-        font-size: 1.5rem;   
-    }
-
-    .p1 {
-        font-size: 1.2rem;  
-    }
-
-    .facebook, .google, .login {
-        font-size: 14px;
-        padding: 10px;
-    }
-} */
-            </style>
-        </main>
-    </body>
+    <script>
+        function switchTab(tab) {
+            document.querySelectorAll('.form').forEach(f => f.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(tab).classList.add('active');
+            document.querySelector(`.tab:nth-child(${tab==='login' ? 1 : 2})`).classList.add('active');
+        }
+    </script>
+</body>
 </html>
