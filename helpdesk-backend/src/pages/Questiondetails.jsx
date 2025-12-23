@@ -30,9 +30,6 @@ export async function postQuestion(payload, userId) {
   if (!payload?.title || !payload?.content) {
     throw new Error("Title and content are required");
   }
-
-  /* ---------- NORMALIZATION ---------- */
-
   const question = {
     title: payload.title.trim(),
     content: payload.content.trim(),
@@ -60,3 +57,4 @@ export async function postQuestion(payload, userId) {
 
   return docRef.id;
 }
+
