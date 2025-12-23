@@ -8,13 +8,15 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { app } from "../fireconnection";
 
-/* ================= CONTEXT ================= */
+import {
+  doc,
+  setDoc,
+  serverTimestamp,
+} from "firebase/firestore";
 
+import { app, db } from "../fireconnection";
 const AuthContext = createContext(null);
-
-/* ================= PROVIDER ================= */
 
 export function AuthProvider({ children }) {
   const auth = getAuth(app);
@@ -23,31 +25,67 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  /* ---------- REAL-TIME AUTH LISTENER ---------- */
-  // Similar to Firestore onSnapshot()
+  /* ---------- AUTH STATE LISTENER ---------- */
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser); // null if logged out
+      setUser(firebaseUser);
       setLoading(false);
     });
 
     return () => unsubscribe();
   }, [auth]);
 
-  /* ---------- ONE-TIME AUTH ACTIONS ---------- */
+  /* ---------- SAVE USER TO FIRESTORE ---------- */
+  const saveUserToDB = async (user, provider, extraData = {}) => {
+    if (!user) return;
 
-  // Signup (one-time)
-  const signup = async (email, password) => {
+    const userRef = doc(db, "users", user.uid);
+
+    await setDoc(
+      userRef,
+      {
+        uid: user.uid,
+        email: user.email,
+        name: extraData.name || user.displayName || "Anonymous",
+        interests: extraData.interests || [],
+        skillLevel: extraData.skillLevel || "beginner",
+
+        provider,
+        joinedAt: serverTimestamp(),
+      },
+      { merge: true }
+    );
+  };
+
+  /* ---------- SIGNUP ---------- */
+  const signup = async (
+    email,
+    password,
+    { name, interests, skillLevel }
+  ) => {
     try {
       setError(null);
-      return await createUserWithEmailAndPassword(auth, email, password);
+
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      await saveUserToDB(result.user, "password", {
+        name,
+        interests,
+        skillLevel,
+      });
+
+      return result;
     } catch (err) {
       setError(err.message);
       throw err;
     }
   };
 
-  // Login (one-time)
+  /* ---------- LOGIN ---------- */
   const login = async (email, password) => {
     try {
       setError(null);
@@ -58,19 +96,28 @@ export function AuthProvider({ children }) {
     }
   };
 
-  // Google login (one-time)
+  /* ---------- GOOGLE LOGIN ---------- */
   const loginWithGoogle = async () => {
     try {
       setError(null);
+
       const provider = new GoogleAuthProvider();
-      return await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, provider);
+
+      await saveUserToDB(result.user, "google", {
+        name: result.user.displayName,
+        interests: [],
+        skillLevel: "beginner",
+      });
+
+      return result;
     } catch (err) {
       setError(err.message);
       throw err;
     }
   };
 
-  // Logout (one-time)
+  /* ---------- LOGOUT ---------- */
   const logout = async () => {
     try {
       setError(null);
@@ -96,13 +143,10 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider value={value}>
-      {/* Prevent UI flicker */}
       {!loading && children}
     </AuthContext.Provider>
   );
 }
-
-/* ================= HOOK ================= */
 
 export function useAuthContext() {
   const context = useContext(AuthContext);
