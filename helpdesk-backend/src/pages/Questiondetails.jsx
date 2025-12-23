@@ -1,159 +1,62 @@
-import { createContext, useContext, useEffect, useState } from "react";
 import {
-  getAuth,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  signOut,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
-
-import {
-  doc,
-  setDoc,
+  collection,
+  addDoc,
   serverTimestamp,
 } from "firebase/firestore";
+import { db } from "./fireconnection";
 
-import { app, db } from "../fireconnection";
-const AuthContext = createContext(null);
+/**
+ * CORE LOGIC: Create a question
+ * --------------------------------
+ * Gathers question info and persists it to Firestore
+ *
+ * @param {Object} payload - Question data from client
+ * @param {string} payload.title
+ * @param {string} payload.content
+ * @param {string[]} payload.tags
+ * @param {string} payload.status
+ *
+ * @param {string} userId - Authenticated user ID
+ *
+ * @returns {string} questionId
+ */
+export async function postQuestion(payload, userId) {
+  /* ---------- VALIDATION ---------- */
 
-export function AuthProvider({ children }) {
-  const auth = getAuth(app);
-
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  /* ---------- AUTH STATE LISTENER ---------- */
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser);
-      setLoading(false);
-    });
-
-    return () => unsubscribe();
-  }, [auth]);
-
-  /* ---------- SAVE USER TO FIRESTORE ---------- */
-  const saveUserToDB = async (user, provider, extraData = {}) => {
-    if (!user) return;
-
-    const userRef = doc(db, "users", user.uid);
-
-    await setDoc(
-      userRef,
-      {
-        uid: user.uid,
-        email: user.email,
-        name: extraData.name || user.displayName || "Anonymous",
-        interests: extraData.interests || [],
-        skillLevel: extraData.skillLevel || "beginner",
-
-        provider,
-        joinedAt: serverTimestamp(),
-      },
-      { merge: true }
-    );
-  };
-
-  /* ---------- SIGNUP ---------- */
-  const signup = async (
-    email,
-    password,
-    { name, interests, skillLevel }
-  ) => {
-    try {
-      setError(null);
-
-      const result = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-      await saveUserToDB(result.user, "password", {
-        name,
-        interests,
-        skillLevel,
-      });
-
-      return result;
-    } catch (err) {
-      setError(err.message);
-      throw err;
-    }
-  };
-
-  /* ---------- LOGIN ---------- */
-  const login = async (email, password) => {
-    try {
-      setError(null);
-      return await signInWithEmailAndPassword(auth, email, password);
-    } catch (err) {
-      setError(err.message);
-      throw err;
-    }
-  };
-
-  /* ---------- GOOGLE LOGIN ---------- */
-  const loginWithGoogle = async () => {
-    try {
-      setError(null);
-
-      const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(auth, provider);
-
-      await saveUserToDB(result.user, "google", {
-        name: result.user.displayName,
-        interests: [],
-        skillLevel: "beginner",
-      });
-
-      return result;
-    } catch (err) {
-      setError(err.message);
-      throw err;
-    }
-  };
-
-  /* ---------- LOGOUT ---------- */
-  const logout = async () => {
-    try {
-      setError(null);
-      await signOut(auth);
-    } catch (err) {
-      setError(err.message);
-      throw err;
-    }
-  };
-
-  const clearError = () => setError(null);
-
-  const value = {
-    user,
-    loading,
-    error,
-    signup,
-    login,
-    loginWithGoogle,
-    logout,
-    clearError,
-  };
-
-  return (
-    <AuthContext.Provider value={value}>
-      {!loading && children}
-    </AuthContext.Provider>
-  );
-}
-
-export function useAuthContext() {
-  const context = useContext(AuthContext);
-
-  if (!context) {
-    throw new Error("useAuthContext must be used inside AuthProvider");
+  if (!userId) {
+    throw new Error("Authentication required");
   }
 
-  return context;
+  if (!payload?.title || !payload?.content) {
+    throw new Error("Title and content are required");
+  }
+
+  /* ---------- NORMALIZATION ---------- */
+
+  const question = {
+    title: payload.title.trim(),
+    content: payload.content.trim(),
+    tags: Array.isArray(payload.tags)
+      ? payload.tags.map((t) => t.trim())
+      : [],
+    status: payload.status || "open",
+  };
+
+  /* ---------- PERSIST ---------- */
+
+  const docRef = await addDoc(collection(db, "questions"), {
+    ...question,
+
+    // system fields
+    userId,
+    views: 0,
+    upvotes: 0,
+
+    createdAt: serverTimestamp(),
+    updatedAt: serverTimestamp(),
+  });
+
+  /* ---------- RESPONSE ---------- */
+
+  return docRef.id;
 }
